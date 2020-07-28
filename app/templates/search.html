@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .body{
+        margin : 0;
+    }
+    .tcontainer{
+        display : flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        width : 100%;
+        height : 100px;
+        background-color : pink;
+    }
+    .tleft{
+        display : flex;
+        align-items: left;
+        width: 33%;
+        height : 100px;
+        background: yellow;
+
+    }
+    .tcentr{
+        display : flex;
+        align-items: center;
+        text-align : center;
+        width : 44%;
+        height: 100px;
+
+    }
+    .tright{
+        display : flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: right;
+        width : 23%;
+        height : 100px;
+        background-color: red;
+    }
+    .mcontainer{
+        text-align : center;
+        align-items: center;
+        background-color : green;
+    }
+    .bcontainer{
+        align-items: right;
+    }
+</style>
+<body>
+    <div class = "tcontainer">
+        <div class = "tleft">
+            <center><p>검색검색왕</p></center>
+        </div>
+        <div class = "tcentr">
+            <form action = "{% url 'result' %}" method = 'GET'>
+            <input type = "text" name = "query" value = "{{query}}" placeholder="검색해보자!">
+            <button><a href = "file:///C:/Users/merry/Desktop/%EB%A9%8B%EC%82%AC/diangofirst/_0721/app/templates/search.html">상세 검색하러가기</a></button>
+           <select name ="selected">
+            <option value="no">모든검색</option>
+            <option value="title">제목</option>
+            <option value="text">본문</option>
+            <option value="author">글쓴이</option>
+        </form>
+        </div> 
+        <div class = "tright">
+            <center><p>예빈님 안녕하세요?</p></center>
+        </div>
+ 
+        </div>
+</body>
+</html>

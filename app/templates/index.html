@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<style>
+    .body{
+        margin : 0;
+        text-align: center;
+    }
+    .tcontainer{
+        display : flex;
+        flex-direction: row;
+        text-align : center;
+        align-items: center;
+        width : 100%;
+        height : 100px;
+        background-color: white;
+    }
+    .tleft{
+        display : flex;
+        width: 33%;
+        height : 100px;
+        background: wheat;
+
+    }
+    .tcentr{
+        display : flex;
+        align-items: center;
+        width : 44%;
+        height: 100px;
+
+    }
+    .tright{
+        display : flex;
+        flex-direction: row;
+        align-items: right;
+        width : 23%;
+        height : 100px;
+        background-color : lightblue;
+    }
+    .mcontainer{
+        text-align : center;
+        align-items: center;
+        background-color :lightgoldenrodyellow;
+    }
+    .bcontainer{
+        align-items: right;
+        text-align : right;
+    }
+</style>
+<body>
+
+    <div class = "tcontainer">
+        <div class = "tleft">
+            <center><p>검색검색왕</p></center>
+        </div>
+        <div class = "tcentr">
+            <form action= "{% url 'result' %}" method="GET">
+                <input type="text" name="query" value="{{query}}" placeholder = "상세 검색"><br>
+                    <label><input type="checkbox"  value = "all" name="setting" checked>전체</label>
+                    <label><input type="checkbox"  value = "author" name="setting">제목</label>
+                    <label><input type="checkbox" id="inlineCheckbox2" value = "title" name="setting">내용</label>
+                    <label><input type="checkbox" id="inlineCheckbox3" value = "text" name="setting">글쓴이</label>
+                </form>
+        </div> 
+        <div class = "tright">
+           <p>예빈님 안녕하세요?</p>
+        </div>
+    </div>
+
+    <div class = "mcontainer">
+    {% for i in blog_list %}
+    <a href = "{% url 'detail' i.id %}">
+    <h1>글 제목 : {{i.title}}</h1>
+    <p>글쓴이 : {{i.author}}</p>
+    <p>작성 시간 : {{i.time}}</p>
+    </a>
+    <br>
+    {% endfor %}
+    </div>
+
+    <div class = "bcontainer">
+        <right><button><a href = "{% url 'create' %}">새로 만들기</a></button></right>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .body{
+        margin : 0;
+    }
+    .tcontainer{
+        display : flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        width : 100%;
+        height : 100px;
+        background-color : wheat;
+    }
+    .tleft{
+        display : flex;
+        align-items: left;
+        width: 33%;
+        height : 100px;
+        background: lightskyblue;
+
+    }
+    .tcentr{
+        display : flex;
+        align-items: center;
+        text-align : center;
+        width : 44%;
+        height: 100px;
+
+    }
+    .tright{
+        display : flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: right;
+        width : 23%;
+        height : 100px;
+        background-color: lightgoldenrodyellow;
+    }
+    .mcontainer{
+        text-align : center;
+        align-items: center;
+        background-color : lightslategrey;
+    }
+    .bcontainer{
+        align-items: right;
+    }
+</style>
+<body>
+    
+    <div class = "tcontainer">
+        <div class = "tleft">
+            <center><p>검색검색왕</p></center>
+        </div>
+        <div class = "tcentr">
+            <form action = "{% url 'result' %}" method = 'GET'>
+            <input type = "text" name = "query" value = "{{query}}" placeholder="검색해보자!">
+        </form>
+        </div> 
+        <div class = "tright">
+            <center><p>예빈님 안녕하세요?</p></center>
+        </div>
+ 
+        </div>
+        <div class = "mcontainer">
+            <p>"{{query}}"에 대한 결과는 다음과 같다</p>
+        <br>
+            {% if BlogPosts %}
+            <p>검색어 "{{query}}"에 대한 {{BlogPosts.count}} 개의 결과가 존재합니다</p><br>
+            {% else %}
+            <p>검색 결과가 존재하지 않습니다</p>
+            {% endif %}
+
+            {% for post in BlogPosts %}
+                <p>제목 : {{post.title}}</p>
+                <p>내용 : {{post.text}}</p>
+                <p>글쓴이 : {{post.author}}</p>
+            {% endfor %}
+        </div>
+</body>
+</html>

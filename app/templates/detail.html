@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>글 제목 - {{blog.title}}</h1>
+    <h2>내용 - {{blog.text}}</h2>
+    <p>글쓴이 : {{blog.author}}</p>
+    <p>작성 날짜 : {{blog.time}}</p>
+    <a href = "{% url 'delete' blog.id %}">삭제하기</a>
+    <a href = "{% url 'update' blog.id %}">수정하기</a>
+<!-- 삭제와 수정을 위해 model에서 blog를 가져와야함 -->
+</body>
+</html>
